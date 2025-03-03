@@ -1,0 +1,93 @@
+:root {
+  --primary-color: #007BFF;
+  --font-family: 'Helvetica Neue', Arial, sans-serif;
+  --border-radius: 8px;
+}
+
+/* Warm gradient achtergrond voor de gehele pagina */
+body {
+  margin: 0;
+  padding: 1rem;
+  background: linear-gradient(135deg, #FF7E5F, #FEB47B);
+  color: #333;
+  font-family: var(--font-family);
+}
+
+.frosted {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+header, nav {
+  text-align: center;
+}
+
+nav button {
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: var(--border-radius);
+  background-color: var(--primary-color);
+  color: #fff;
+  transition: background-color 0.3s;
+}
+
+nav button:hover {
+  background-color: #0056b3;
+}
+
+.columns {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.column {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+  background: rgba(255, 255, 255, 0.6);
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  padding: 0.5rem;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+li:last-child {
+  border-bottom: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input[type="text"] {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: var(--border-radius);
+  width: calc(100% - 1rem);
+  margin-bottom: 0.5rem;
+}
+
+.hidden {
+  display: none;
+}
