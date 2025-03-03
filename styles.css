@@ -1,0 +1,281 @@
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Full height calculations for iOS */
+:root {
+  --vh: 1vh;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+  min-height: -webkit-fill-available;
+  overflow: hidden;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+  min-height: -webkit-fill-available;
+  overflow: hidden;
+  background-color: #0055ff;
+  background-image: linear-gradient(135deg, #0055ff 0%, #ff8c00 100%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
+/* #app container is scrollable so the background stays fixed */
+#app {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  z-index: 1;
+}
+
+/* Glass Panel Effect with fallback for iOS */
+.glass-panel {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 20px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  margin: 50px auto 160px auto; /* extra bottom margin om overlap met nav te voorkomen */
+  position: relative;
+  z-index: 1;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+/* Each screen is displayed as a separate panel */
+.screen {
+  min-height: calc(100vh - 200px); /* genoeg ruimte voor top margin + nav + safe area */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* Bottom Sticky Nav */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  z-index: 999;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.nav-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.nav-btn img {
+  width: 28px;
+  height: 28px;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.2));
+  background: none;
+}
+
+/* Roster container for training */
+.roster-container {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.column {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 10px;
+}
+
+/* Lists */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  padding: 0.5rem 0.3rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+li:last-child {
+  border-bottom: none;
+}
+
+/* Spelernaam en checkbox: naam links, checkbox rechts */
+li .player-name {
+  flex: 1;
+  margin-right: 10px;
+  overflow-wrap: break-word;
+}
+
+li .player-checkbox {
+  margin-left: auto;
+}
+
+/* Actieknoppen in de spelerslijst: bewerken en verwijderen */
+.player-actions {
+  display: flex;
+  gap: 5px;
+}
+
+.player-actions button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.player-actions img {
+  width: 20px;
+  height: 20px;
+  background: none;
+}
+
+/* Hidden class for screens */
+.hidden {
+  display: none !important;
+}
+
+/* Headings */
+h1, h2 {
+  color: white;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* Buttons */
+.primary-button, .secondary-button {
+  padding: 12px 20px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  margin-top: 10px;
+}
+
+.primary-button {
+  background-color: white;
+  color: #0055ff;
+}
+
+.secondary-button {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+/* Form styling */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.auth-form input {
+  font-size: 16px;
+  letter-spacing: 0;
+  text-align: left;
+}
+
+/* Live Stats */
+#live-stats {
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* History / Seizoenen container */
+.history-container {
+  width: 100%;
+  max-height: 300px;
+  overflow-y: auto;
+  margin: 20px 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Seizoendetail card spacing */
+#season-info p {
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+#season-info h2 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+#season-info ul li {
+  margin-bottom: 8px;
+}
+
+/* iOS specific */
+@supports (-webkit-touch-callout: none) {
+  body {
+    background-color: #0055ff !important;
+    background-image: linear-gradient(135deg, #0055ff 0%, #ff8c00 100%) !important;
+    background-attachment: fixed !important;
+    min-height: -webkit-fill-available;
+  }
+  .screen {
+    min-height: -webkit-fill-available;
+  }
+  /* Prevent iOS from zooming on input focus */
+  input, button, select, textarea {
+    font-size: 16px !important;
+  }
+}
