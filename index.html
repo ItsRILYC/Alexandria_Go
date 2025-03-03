@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alexandria Go</title>
+  
+  <!-- Styles & Manifest -->
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- Favicon en Apple-web app instellingen -->
+  <link rel="icon" href="favicon.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <link rel="apple-touch-icon" href="favicon.png" />
+
+  <!-- jsPDF via CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <!-- Hoofdcontainer voor alle “schermen” (scrollbaar) -->
+  <div id="app">
+    <!-- Trainingsscherm -->
+    <div id="training-screen" class="screen glass-panel">
+      <h1>Trainingsdag: <span id="training-date"></span></h1>
+      <div class="roster-container">
+        <div class="column">
+          <h2>Aanwezig</h2>
+          <ul id="present-list"></ul>
+        </div>
+        <div class="column">
+          <h2>Afwezig</h2>
+          <ul id="absent-list"></ul>
+        </div>
+      </div>
+      <button id="btn-save-training" class="primary-button">Opslaan Trainingsdag</button>
+      <div id="live-stats">
+        <p id="live-present">Aanwezig: 0/0 (0%)</p>
+        <p id="live-absent">Afwezig: 0/0 (0%)</p>
+      </div>
+    </div>
+
+    <!-- Team Beheer -->
+    <div id="roster-screen" class="screen glass-panel hidden">
+      <h1>Team Beheer</h1>
+      <ul id="roster-list"></ul>
+      <form id="player-form" class="auth-form">
+        <input type="text" id="player-name" placeholder="Speler naam" required />
+        <button type="submit" class="primary-button">Toevoegen</button>
+      </form>
+    </div>
+
+    <!-- Seizoenenoverzicht -->
+    <div id="seasons-screen" class="screen glass-panel hidden">
+      <h1>Seizoenen</h1>
+      <ul id="season-list" class="history-container"></ul>
+    </div>
+
+    <!-- Seizoen Detail -->
+    <div id="season-detail-screen" class="screen glass-panel hidden">
+      <button id="btn-back-seasons" class="secondary-button">Terug naar Seizoenen</button>
+      <h1>Seizoen Detail</h1>
+      <div id="season-info"></div>
+      <button id="btn-export-pdf" class="primary-button">Download PDF</button>
+    </div>
+  </div>
+
+  <!-- Sticky Bottom Nav met iconen -->
+  <div id="bottom-nav" class="bottom-nav">
+    <button id="btn-training" class="nav-btn" data-target="training-screen">
+      <img src="icons/training.svg" alt="Training" />
+    </button>
+    <button id="btn-roster" class="nav-btn" data-target="roster-screen">
+      <img src="icons/team.svg" alt="Team" />
+    </button>
+    <button id="btn-seasons" class="nav-btn" data-target="seasons-screen">
+      <img src="icons/seasons.svg" alt="Seizoenen" />
+    </button>
+  </div>
+
+  <!-- Hoofdscript van de app -->
+  <script src="app.js"></script>
+  <script>
+    // Registreer de service worker
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker
+        .register("service-worker.js")
+        .then((reg) => console.log("Service Worker geregistreerd:", reg.scope))
+        .catch((err) => console.error("Service Worker registratie mislukt:", err));
+    }
+  </script>
+</body>
+</html>
